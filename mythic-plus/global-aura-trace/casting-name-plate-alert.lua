@@ -1,8 +1,30 @@
+-- Trigger init
+function()
+
+end
+
 -- EVENT: COMBAT_LOG_EVENT_UNFILTERED
 -- Trigger
-function(event, _, subEvent, _, _, sourceName, _, _, _, _, _, _, spellID)
+function(event)
+    local alertSpell = {
+        257426: true
+    }
+    local _, subEvent, _, sourceGUID, sourceName, _, _, _, _, _, _, spellID = CombatLogGetCurrentEventInfo()
+
     if subEvent == "SPELL_CAST_START" and UnitExists(sourceName) then
-        local name, _, _, _, _, _ = UnitCastingInfo(sourceName)
+        local spellName, _, _, _, _, _ = UnitCastingInfo(sourceName)
+
+        if alertSpell[spellID] then
+            for i = 0, 40 do
+                local plate = "nameplate"..i
+                
+            end
+        end
+
+
+        if true then
+            
+        end
 
         WeakAuras.ScanEvents("ZX_CASTING_NAME_PLATE_ALERT_START")
     end
